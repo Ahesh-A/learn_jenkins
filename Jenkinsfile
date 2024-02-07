@@ -28,5 +28,10 @@ pipeline {
                 bat 'docker logout'
             }
         }
+        stage('doploy to kubernetes'){
+            steps{
+                kubernetesDeploy (configs: 'deployment.yaml', kubeconfigId: 'k8sconfigcrdls')
+            }
+        }
     }
 }
